@@ -1,0 +1,13 @@
+yprime=@(t,y) t.*exp(3.*t)-2.*y;
+h=0.01;
+x=0:h:1;
+y=0;
+f=@(t)t.*exp(3.*t)./5-exp(3.*t)./25+exp(-2.*t)./25;
+yplot=f(x);
+Heuns_Euler1=Heuns_Euler(yprime,h,x,y);
+Fourth_Euler=Fourth_Der_Euler(yprime,h,x,y);
+Error_Heuns=abs(yplot-Heuns_Euler1);
+Error_Fourth=abs(yplot-Fourth_Euler);
+figure(1);
+clf;
+plot(x,Error_Heuns,x,Error_Fourth);

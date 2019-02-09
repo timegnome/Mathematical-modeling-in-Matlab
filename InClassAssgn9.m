@@ -1,0 +1,13 @@
+yprime=@(t,y) t.*exp(3.*t)-2.*y;
+h=0.01;
+x=0:h:1;
+y=0;
+f=@(t)t.*exp(3.*t)./5-exp(3.*t)./25+exp(-2.*t)./25;
+yplot=f(x);
+Mid_Euler=Midpoint_Euler(yprime,h,x,y);
+Mod_Euler=Modified_Euler(yprime,h,x,y);
+Error_mid=abs(yplot-Mid_Euler);
+Error_Mod=abs(yplot-Mod_Euler);
+figure(1);
+clf;
+plot(x,Error_mid,x,Error_Mod);
